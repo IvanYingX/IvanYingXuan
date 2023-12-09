@@ -1,20 +1,32 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import NotFound from "./components/NotFound";
-import Home from "./pages/Home";
-import NavBar from "./components/NavBar";
-
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import NotFound from './components/NotFound';
+import NavBar from './components/NavBar';
+import MainApp from './routes/MainApp';
+import { useRef } from 'react';
+import { ParallaxProvider } from "react-scroll-parallax"
 
 function App() {
+  const homeRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+
   return (
-    <>
-      <NavBar />
+    <ParallaxProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} />
+                <MainApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} />
+              </>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </ParallaxProvider>
   );
 }
 
