@@ -1,6 +1,5 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import NotFound from './components/NotFound';
-import NavBar from './components/NavBar';
+import { NotFound, NavBar } from './components';
 import MainApp from './routes/MainApp';
 import { useRef } from 'react';
 import { ParallaxProvider } from "react-scroll-parallax"

@@ -28,16 +28,15 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef }) =
 
   return (
     <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} >
-      <Box ref={homeRef}>
-        <Home nextRef={aboutRef.current as HTMLDivElement} />
+      <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
+        <Home/>
       </Box>
-      <Box ref={aboutRef}>
+      <Box ref={aboutRef} className="container" sx={{ display: "flex", flexDirection: "column" }} id="about">
         <About />
       </Box>
-      <Box ref={experienceRef}>
+      <Box ref={experienceRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="experience" >
         <Experience />
       </Box>
-      {/* {!isScrollAtTop && */}
       <Fade in={!isScrollAtTop} timeout={500}>
         <Button
           variant="contained"

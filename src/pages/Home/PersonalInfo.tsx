@@ -1,18 +1,18 @@
-import { Typography, Stack, Box, Button, useMediaQuery } from "@mui/material";
+import { Typography, Stack, Box } from "@mui/material";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { useState } from "react";
+import { useIsPhone } from "../../hooks";
+import { LogoDescription } from "../../components";
 
 const PersonalInfo: React.FC = () => {
-  const [githubHover, setGithubHover] = useState<boolean>(false);
-  const [linkedinHover, setLinkedinHover] = useState<boolean>(false);
-  const [emailHover, setEmailHover] = useState<boolean>(false);
-  const [phoneHover, setPhoneHover] = useState<boolean>(false);
-  const isPhone = useMediaQuery('(max-width: 600px)');
+  const isPhone = useIsPhone();
+  const handleLinkedInClick = () => window.open("https://www.linkedin.com/in/ivanyingxuan/", "_blank");
+  const handleGitHubClick = () => window.open("https://github.com/IvanYingX", "_blank");
+
   return (
-    <>
+    <Stack direction="column" spacing={2} >
       <Stack direction="column" spacing={2}>
         <Box sx={{ width: "fit-content", marginBottom: "20px", paddingBottom: "10px"}}>
           <Typography
@@ -37,95 +37,25 @@ const PersonalInfo: React.FC = () => {
           Full Stack Developer
         </Typography>
       </Stack>
-      <Stack direction="row" spacing={2} sx={{ marginTop: "40px", animation: "fadeIn 1s" }}>
+      <Stack direction="row" spacing={6} sx={{ marginTop: "40px", animation: "fadeIn 1s" }}>
         <Stack direction="column" spacing={2} sx={{ marginBottom: "10px", marginTop: "40px", animation: "fadeIn 1s" }}>
-          <Typography variant="body1" sx={{ alignItems: "center", display: "flex" }} onMouseEnter={() => setPhoneHover(true)} onMouseLeave={() => setPhoneHover(false)}>
-            <LocalPhoneIcon sx={{ marginRight: "20px", transition: "0.2s" }} color={phoneHover ? "action" : "inherit"} />
-              +34 622 588 772
-          </Typography>
-          <Typography variant="body1" sx={{ alignItems: "center", display: "flex" }} onMouseEnter={() => setEmailHover(true)} onMouseLeave={() => setEmailHover(false)}>
-            <EmailIcon sx={{ marginRight: "20px", transition: "0.2s" }} color={emailHover ? "action" : "inherit"} />
-            ivan@theaicore.com
-          </Typography>
+          <LogoDescription Icon={LocalPhoneIcon} text="+34 622 588 772" />
+          <LogoDescription Icon={EmailIcon} text="ivan.ying.xuan@gmail.com" />
           {isPhone && (
             <>
-              <Typography
-                variant="body1"
-                sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  cursor: "pointer",
-                  ":hover": {
-                    "textDecoration": "underline"
-                  }
-                }}
-                onMouseEnter={() => setLinkedinHover(true)}
-                onMouseLeave={() => setLinkedinHover(false)}
-                onClick={() => window.open("https://www.linkedin.com/in/ivanyingxuan/", "_blank")}
-              >
-                <LinkedInIcon sx={{ marginRight: "20px", transition: "0.2s" }} color={linkedinHover ? "action" : "inherit"} />
-                ivanyingxuan
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  cursor: "pointer",
-                  ":hover": {
-                    "textDecoration": "underline"
-                  }
-                }}
-                onMouseEnter={() => setGithubHover(true)}
-                onMouseLeave={() => setGithubHover(false)}
-                onClick={() => window.open("https://github.com/IvanYingX", "_blank")}
-              >
-                <GitHubIcon sx={{ marginRight: "20px", transition: "0.2s" }} color={githubHover ? "action" : "inherit"} />
-                IvanYingX
-              </Typography>
+              <LogoDescription Icon={LinkedInIcon} text="ivanyingxuan" onClick={handleLinkedInClick} />
+              <LogoDescription Icon={GitHubIcon} text="IvanYingX" onClick={handleGitHubClick} />
             </>
           )}
         </Stack>
         {!isPhone && (
           <Stack direction="column" spacing={2} sx={{ marginBottom: "10px", marginTop: "40px", animation: "fadeIn 1s" }}>
-            <Typography
-              variant="body1"
-              sx={{
-                alignItems: "center",
-                display: "flex",
-                cursor: "pointer",
-                ":hover": {
-                  "textDecoration": "underline"
-                }
-              }}
-              onMouseEnter={() => setLinkedinHover(true)}
-              onMouseLeave={() => setLinkedinHover(false)}
-              onClick={() => window.open("https://www.linkedin.com/in/ivanyingxuan/", "_blank")}
-            >
-              <LinkedInIcon sx={{ marginRight: "20px", transition: "0.2s" }} color={linkedinHover ? "action" : "inherit"} />
-              ivanyingxuan
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                alignItems: "center",
-                display: "flex",
-                cursor: "pointer",
-                ":hover": {
-                  "textDecoration": "underline"
-                }
-              }}
-              onMouseEnter={() => setGithubHover(true)}
-              onMouseLeave={() => setGithubHover(false)}
-              onClick={() => window.open("https://github.com/IvanYingX", "_blank")}
-            >
-              <GitHubIcon sx={{ marginRight: "20px", transition: "0.2s" }} color={githubHover ? "action" : "inherit"} />
-              IvanYingX
-            </Typography>
+            <LogoDescription Icon={LinkedInIcon} text="ivanyingxuan" onClick={handleLinkedInClick} />
+            <LogoDescription Icon={GitHubIcon} text="IvanYingX" onClick={handleGitHubClick} />
           </Stack>
         )}
       </Stack>
-    </>
+    </Stack>
   );
 };
 

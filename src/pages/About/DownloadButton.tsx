@@ -1,8 +1,9 @@
-import { Button, useMediaQuery } from '@mui/material';
+import { Button } from '@mui/material';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import { useIsPhone } from '../../hooks';
 
 const DownloadButton: React.FC = () => {
-  const isPhone = useMediaQuery('(max-width: 600px)');
+  const isPhone = useIsPhone();
   return (
     <Button
       sx={{

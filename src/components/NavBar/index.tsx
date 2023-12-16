@@ -1,4 +1,5 @@
-import { AppBar, Box, Stack, Typography, useMediaQuery } from '@mui/material';
+import { AppBar, Box, Stack, Typography } from '@mui/material';
+import { useIsPhone } from '../../hooks';
 import { useEffect, useState } from 'react';
 import logo from '../../images/logo.png';
 
@@ -42,7 +43,7 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef }) => 
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [homeRef, aboutRef, experienceRef]);
-  const isPhone = useMediaQuery('(max-width: 400px)');
+  const isPhone = useIsPhone();
 
   return (
     

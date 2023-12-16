@@ -1,42 +1,35 @@
-import { Box, Button, useMediaQuery } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import PersonalInfo from './PersonalInfo';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import { useEffect } from 'react';
+import React,{ useEffect, useState } from 'react';
 
-interface HomeProps {
-  nextRef?: HTMLDivElement
-}
+const Home: React.FC = () => {
+  const ref = React.useRef<HTMLDivElement | HTMLElement | null>(null);
+    // Get the bottom of the home section
+  const [homeSectionBottom, setHomeSectionBottom] = useState<number | undefined>(undefined);
 
-const Home: React.FC<HomeProps> = ({ nextRef }) => {
-  const media = useMediaQuery('(max-width: 600px)');
   useEffect(() => {
-    console.log("Media", media);
-    const scrollKeyHandler = (e: KeyboardEvent) => {
-      const nextSection = document.getElementById("about");
-      const nextSectionTop = nextSection?.getBoundingClientRect().top;
-      if (e.key === "ArrowDown" && nextSectionTop && nextSectionTop > 0) {
-        window.scrollTo({ top: nextRef?.offsetTop, behavior: "smooth" });
-      }
-    }
+    const homeSection = document.getElementById("home");
+    ref.current = homeSection;
+    const homeRef = homeSection?.getBoundingClientRect();
+    const homeSectionBottom = homeRef?.bottom;
+    setHomeSectionBottom(homeSectionBottom);
+  }, []);
+  
+  useEffect(() => {
     const scrollMouseHandler = (e: WheelEvent) => {
-      //  Scroll down only if the scroll is down and the next section is not visible (deltaY is positive when scrolling down)
-      const nextSection = document.getElementById("about");
-      const nextSectionTop = nextSection?.getBoundingClientRect().top;
-      // nextSectionTop is positive when the next section is down the screen
-      if (e.deltaY > 0 && nextSectionTop && nextSectionTop > 0) {
-        window.scrollTo({ top: nextRef?.offsetTop, behavior: "smooth" });
+      if (e.deltaY > 0 && homeSectionBottom && homeSectionBottom > 0) {
+        window.scrollTo({ top: homeSectionBottom, behavior: "smooth" });
       }
     }
-    window.addEventListener("keydown", scrollKeyHandler);
-    window.addEventListener("wheel", scrollMouseHandler);
+    ref.current?.addEventListener("wheel", (e) => scrollMouseHandler(e as WheelEvent));
     return () => {
-      window.removeEventListener("keydown", scrollKeyHandler);
-      window.removeEventListener("wheel", scrollMouseHandler);
+      ref.current?.removeEventListener("wheel", (e) => scrollMouseHandler(e as WheelEvent));
     }
-  }, [nextRef, media]);
+  }, [ref, homeSectionBottom]);
 
   return (
-    <Box className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }} id="home" >
+    <Box>
       <Box sx={{ alignItems: "center" }}>
         <PersonalInfo />
       </Box>
@@ -51,7 +44,7 @@ const Home: React.FC<HomeProps> = ({ nextRef }) => {
               transition: "0.2s",
             },
           }}
-          onClick={() => window.scrollTo({ top: nextRef?.offsetTop, behavior: "smooth" })}
+          onClick={() => window.scrollTo({ top: homeSectionBottom, behavior: "smooth" })}
         >
           <KeyboardDoubleArrowDownIcon />
         </Button> 
