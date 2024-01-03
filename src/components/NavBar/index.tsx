@@ -7,9 +7,10 @@ type NavBarProps = {
   homeRef: React.RefObject<HTMLDivElement>;
   aboutRef: React.RefObject<HTMLDivElement>;
   experienceRef: React.RefObject<HTMLDivElement>;
+  educationRef: React.RefObject<HTMLDivElement>;
 };
 
-const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef }) => {
+const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef, educationRef }) => {
   const [disappear, setDisappear] = useState(false);
 
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
@@ -19,14 +20,20 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef }) => 
       aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
     } else if (sectionRef === experienceRef) {
       experienceRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (sectionRef === educationRef) {
+      educationRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const refs = [
     { sectionRef: homeRef, name: "Home"},
     { sectionRef: aboutRef, name: "About"},
-    { sectionRef: experienceRef, name: "Experience"}
+    { sectionRef: experienceRef, name: "Experience"},
+    { sectionRef: educationRef, name: "Education"}
   ]
+
+  const firstHalf = refs.slice(0, Math.floor(refs.length / 2));
+  const secondHalf = refs.slice(Math.floor(refs.length / 2), refs.length);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +64,7 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef }) => 
         paddingLeft: isPhone ? 2 : 10,
         height: "fit-content",
         backgroundColor: disappear ?  "#444" : "rgba(0, 0, 0, 0)",
-        margin: "0 auto",
+        margin: "auto",
         width: "100%",
         animation: disappear ? "disappear 0.5s ease" : "appear 0.5s ease",
       }}
@@ -66,28 +73,38 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef }) => 
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "center",
           width: "100%",
           maxWidth: "1200px",
           margin: "0 auto",
         }}
       >
         <Stack direction="row" spacing={4} sx={{ alignItems: "center", display: "flex" }}>
-          <img src={logo} alt="logo" width="30px" height="30px" style={{ cursor: "pointer" }}/>
-          {refs.map((ref, index) => (
+          {firstHalf.map((ref, index) => (
             <Typography
-              key={`nav-button-${ref.name}`}
-              onClick={() => scrollToSection(ref.sectionRef)}
-              sx={{ color: "white", cursor: "pointer", fontSize: "1.2rem" }}
-              fontWeight="bold"
-              onMouseEnter={(e) => e.currentTarget.style.textDecoration = "underline"}
-              onMouseLeave={(e) => e.currentTarget.style.textDecoration = "none"}
-
+            key={`nav-button-${ref.name}`}
+            onClick={() => scrollToSection(ref.sectionRef)}
+            sx={{ color: "white", cursor: "pointer", fontSize: "1.2rem" }}
+            fontWeight="bold"
+            onMouseEnter={(e) => e.currentTarget.style.textDecoration = "underline"}
+            onMouseLeave={(e) => e.currentTarget.style.textDecoration = "none"}
             >
               {ref.name}
             </Typography>
           ))}
-
+          <img src={logo} alt="logo" width="30px" height="30px" style={{ cursor: "pointer" }}/>
+          {secondHalf.map((ref, index) => (
+            <Typography
+            key={`nav-button-${ref.name}`}
+            onClick={() => scrollToSection(ref.sectionRef)}
+            sx={{ color: "white", cursor: "pointer", fontSize: "1.2rem" }}
+            fontWeight="bold"
+            onMouseEnter={(e) => e.currentTarget.style.textDecoration = "underline"}
+            onMouseLeave={(e) => e.currentTarget.style.textDecoration = "none"}
+            >
+              {ref.name}
+            </Typography>
+          ))}
         </Stack>
       </Box>
     </AppBar>

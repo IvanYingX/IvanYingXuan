@@ -5,6 +5,7 @@ import React,{ useEffect, useState } from 'react';
 
 const Home: React.FC = () => {
   const ref = React.useRef<HTMLDivElement | HTMLElement | null>(null);
+
     // Get the bottom of the home section
   const [homeSectionBottom, setHomeSectionBottom] = useState<number | undefined>(undefined);
 

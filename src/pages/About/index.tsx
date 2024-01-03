@@ -7,7 +7,7 @@ import { useIsPhone } from '../../hooks';
 const About: React.FC = () => {
   const isPhone = useIsPhone();
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between", width: "90%"}}>
+    <Box sx={{ display: "flex", justifyContent: "space-between", width: "90%"}} className="hidden">
       {!isPhone && (
         <Box sx={{alignItems: "center", marginTop: "auto", marginBottom: "auto", flex: "1 1 30%"}}>
           <ProfilePicture />

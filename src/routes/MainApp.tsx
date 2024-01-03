@@ -5,14 +5,19 @@ import Experience from '../pages/Experience';
 import backgroundImage from '../images/8.jpg';
 import { Box, Button, Fade } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import Education from '../pages/Education';
+import { NavBar } from '../components';
+import CollapsedNavBar from '../components/CollapsedNavBar';
+import { useIsPhone } from '../hooks';
 
 type MainAppProps = {
   homeRef: RefObject<HTMLDivElement>;
   aboutRef: RefObject<HTMLDivElement>;
   experienceRef: RefObject<HTMLDivElement>;
+  educationRef: RefObject<HTMLDivElement>;
 };
 
-const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef }) => {
+const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, educationRef }) => {
   const [isScrollAtTop, setIsScrollAtTop] = React.useState<boolean>(true);
   useEffect(() => {
     const scrollHandler = () => {
@@ -26,39 +31,50 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef }) =
     return () => window.removeEventListener("scroll", scrollHandler);
   }, [homeRef, aboutRef, experienceRef, isScrollAtTop]);
 
+  const isPhone = useIsPhone();
+
   return (
-    <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} >
-      <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
-        <Home/>
-      </Box>
-      <Box ref={aboutRef} className="container" sx={{ display: "flex", flexDirection: "column" }} id="about">
-        <About />
-      </Box>
-      <Box ref={experienceRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="experience" >
-        <Experience />
-      </Box>
-      <Fade in={!isScrollAtTop} timeout={500}>
-        <Button
-          variant="contained"
-          sx={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            zIndex: 100,
-            backgroundColor: "#444",
-            transition: "0.2s",
-            ":hover": {
-              backgroundColor: "#111",
+    <>
+      {isPhone && <CollapsedNavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
+      {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
+      {/* <CollapsedNavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/>
+      <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> */}
+      <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} >
+        <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
+          <Home/>
+        </Box>
+        <Box ref={aboutRef} className="container" sx={{ display: "flex", flexDirection: "column" }} id="about">
+          <About />
+        </Box>
+        <Box ref={experienceRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="experience" >
+          <Experience />
+        </Box>
+        <Box ref={educationRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="education" >
+          <Education />
+        </Box>
+        <Fade in={!isScrollAtTop} timeout={500}>
+          <Button
+            variant="contained"
+            sx={{
+              position: "fixed",
+              bottom: "20px",
+              right: "20px",
+              zIndex: 100,
+              backgroundColor: "#444",
               transition: "0.2s",
-            }
-          }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          <ArrowUpwardIcon />
-        </Button>
-      </Fade>
-      {/* } */}
-    </Box>
+              ":hover": {
+                backgroundColor: "#111",
+                transition: "0.2s",
+              }
+            }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <ArrowUpwardIcon />
+          </Button>
+        </Fade>
+        {/* } */}
+      </Box>
+    </>
   );
 };
 

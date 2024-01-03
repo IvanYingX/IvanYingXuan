@@ -2,9 +2,6 @@ import { Typography, Box, Collapse, Stack } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExperienceDescription from "../ExperienceDescription";
 import { useEffect, useState } from "react";
-import SchoolIcon from '@mui/icons-material/School';
-import WorkIcon from '@mui/icons-material/Work';
-import { useIsPhone } from "../../hooks";
 interface IExperienceStep {
   title: string;
   company: string;
@@ -25,7 +22,6 @@ const ExperienceStep: React.FC<ExperienceStepProps> = ({
   toggleAllExpanded,
 }) => {
   const [expanded, setExpanded] = useState<boolean>(true);
-  const isPhone = useIsPhone();
   useEffect(() => {
     if (toggleAllExpanded) {
       setExpanded(true);
@@ -34,29 +30,15 @@ const ExperienceStep: React.FC<ExperienceStepProps> = ({
     }
   }, [toggleAllExpanded]);
 
-  const logoStyle = {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    color: '#444', // Optional, if you want your icon to have a specific color
-    backgroundColor: 'background.paper', // Optional, if you want to add background
-    borderRadius: '50%', // Optional, if you want rounded edges
-    padding: '3px', // Optional, for spacing inside the icon
-    fontSize: isPhone ? '1.2rem' : '1.5rem',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' // Optional, for better visibility against the logo
-  };
-
-  const { title, company, from_date, to_date, description, logo, type } = step;
+  const { title, company, from_date, to_date, description, logo } = step;
 
   return (
-    <>
+    <Box className="hidden">
       <Stack direction="row" spacing={3} sx={{ marginBottom: "20px", alignItems: "center" }} onClick={() => setExpanded(!expanded)}>
-        <Box sx={{ position: 'relative', width: isPhone ? "20%" : "8%" }}>
+        <Box sx={{ position: 'relative', width: "8%" }}>
           <img src={logo} alt="logo" style={{ width: "100%" }} />
-          {type === "education" && (<SchoolIcon sx={logoStyle}/>)}
-          {type === "work" && (<WorkIcon sx={logoStyle}/>)}
         </Box>
-        <Stack direction="column" spacing={1} sx={{ width: "80%" }}>
+        <Stack direction="column" spacing={1} sx={{ width: "80%", cursor: "pointer" }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography variant="h5" sx={{ fontWeight: "bold" }}>
               {title}
@@ -80,7 +62,7 @@ const ExperienceStep: React.FC<ExperienceStepProps> = ({
       <Collapse in={expanded}>
         <ExperienceDescription description={description} />
       </Collapse>
-    </>
+    </Box>
   );
 }
 

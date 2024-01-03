@@ -1,31 +1,28 @@
-import { Typography, Stack, Box } from "@mui/material";
+import { Typography, Stack, Box, Grid } from "@mui/material";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { useIsPhone } from "../../hooks";
 import { LogoDescription } from "../../components";
 
 const PersonalInfo: React.FC = () => {
-  const isPhone = useIsPhone();
   const handleLinkedInClick = () => window.open("https://www.linkedin.com/in/ivanyingxuan/", "_blank");
   const handleGitHubClick = () => window.open("https://github.com/IvanYingX", "_blank");
 
   return (
-    <Stack direction="column" spacing={2} >
-      <Stack direction="column" spacing={2}>
+    <Stack direction="column" spacing={2} paddingLeft={2} >
+      <Stack direction="column" spacing={2}  className="hidden">
         <Box sx={{ width: "fit-content", marginBottom: "20px", paddingBottom: "10px"}}>
           <Typography
-          variant="body1"
-          fontWeight={600}
-          sx={{
-            backgroundColor: "white",
-            color: "#444",
-            padding: "5px 30px",
-            borderTopLeftRadius: "15px",
-            borderTopRightRadius: "15px",
-            borderBottomRightRadius: "15px",
-            animation: "fadeIn 0.5s",
+            variant="body1"
+            fontWeight={600}
+            sx={{
+              backgroundColor: "white",
+              color: "#444",
+              padding: "5px 30px",
+              borderTopLeftRadius: "15px",
+              borderTopRightRadius: "15px",
+              borderBottomRightRadius: "15px",
           }}>
             Welcome to my interactive resume
           </Typography>
@@ -33,28 +30,44 @@ const PersonalInfo: React.FC = () => {
         <Typography id="full-name">
           Ivan Ying Xuan
         </Typography>
-        <Typography variant="h5" sx={{ fontWeight: "bold", animation: "fadeIn 1s" }}>
-          Full Stack Developer
-        </Typography>
+        <Grid container className="hidden">
+          <Grid item xs={12} sm={1.5} md={1.4}>
+            <Typography variant="h5">
+              I am a 
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={10} md={10.5}>
+            <Box className="rotating-words-container">
+              <Typography variant="h5">
+                Full Stack Developer
+              </Typography>
+              <Typography variant="h5">
+                Chemical Engineer
+              </Typography>
+              <Typography variant="h5">
+                Process Engineer
+              </Typography>
+              <Typography variant="h5">
+                Full Stack Developer
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
       </Stack>
-      <Stack direction="row" spacing={6} sx={{ marginTop: "40px", animation: "fadeIn 1s" }}>
-        <Stack direction="column" spacing={2} sx={{ marginBottom: "10px", marginTop: "40px", animation: "fadeIn 1s" }}>
+      <Grid container sx={{ marginTop: "40px"}} className="hidden" rowSpacing={2}>
+        <Grid item xs={12} sm={5}>
           <LogoDescription Icon={LocalPhoneIcon} text="+34 622 588 772" />
+        </Grid>
+        <Grid item xs={12} sm={5}>
           <LogoDescription Icon={EmailIcon} text="ivan.ying.xuan@gmail.com" />
-          {isPhone && (
-            <>
-              <LogoDescription Icon={LinkedInIcon} text="ivanyingxuan" onClick={handleLinkedInClick} />
-              <LogoDescription Icon={GitHubIcon} text="IvanYingX" onClick={handleGitHubClick} />
-            </>
-          )}
-        </Stack>
-        {!isPhone && (
-          <Stack direction="column" spacing={2} sx={{ marginBottom: "10px", marginTop: "40px", animation: "fadeIn 1s" }}>
-            <LogoDescription Icon={LinkedInIcon} text="ivanyingxuan" onClick={handleLinkedInClick} />
-            <LogoDescription Icon={GitHubIcon} text="IvanYingX" onClick={handleGitHubClick} />
-          </Stack>
-        )}
-      </Stack>
+        </Grid>
+        <Grid item xs={12} sm={5}>
+          <LogoDescription Icon={LinkedInIcon} text="ivanyingxuan" onClick={handleLinkedInClick} />
+        </Grid>
+        <Grid item xs={12} sm={5}>
+          <LogoDescription Icon={GitHubIcon} text="IvanYingX" onClick={handleGitHubClick} />
+        </Grid>
+      </Grid>
     </Stack>
   );
 };

@@ -5,7 +5,7 @@ import ToggleButton from '../../components/ToggleButton';
 import { steps } from './constants';
 
 
-const Experience: React.FC = () => {
+const Education: React.FC = () => {
   const [toggleAllExpanded, setToggleAllExpanded] = React.useState<boolean>(true);
 
   const toggleAll = () => {
@@ -14,7 +14,7 @@ const Experience: React.FC = () => {
 
   return (
     <Box sx={{ alignItems: "center", marginLeft: "auto", marginRight: "auto", width: "80%" }}>
-      <Typography variant="h3" sx={{ marginBottom: "20px" }} className='hidden'>Experience</Typography>
+      <Typography variant="h3" sx={{ marginBottom: "20px" }} className='hidden'>Education</Typography>
       <Stack direction="column" spacing={5} sx={{ marginBottom: "20px" }}>
         <ToggleButton
           show={toggleAllExpanded}
@@ -24,7 +24,7 @@ const Experience: React.FC = () => {
         />
         {steps.map((step) => (
           <ExperienceStep
-            key={`experience-step-${step.title}`}
+            key={`education-step-${step.title}`}
             step={step}
             toggleAllExpanded={toggleAllExpanded}
           />
@@ -34,4 +34,4 @@ const Experience: React.FC = () => {
   );
 };
 
-export default Experience;
+export default Education;
