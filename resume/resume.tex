@@ -1,0 +1,58 @@
+\documentclass{article}
+
+% Packages
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{enumitem}
+
+% Personal Information
+\newcommand{\name}{Your Name}
+\newcommand{\email}{your.email@example.com}
+\newcommand{\phone}{(123) 456-7890}
+\newcommand{\address}{123 Main Street, City, State, ZIP}
+
+\begin{document}
+
+% Header
+\begin{center}
+    \textbf{\Huge \name}
+\end{center}
+
+\begin{flushleft}
+    \textbf{Email:} \email \\
+    \textbf{Phone:} \phone \\
+    \textbf{Address:} \address
+\end{flushleft}
+
+% Education
+\section*{Education}
+\begin{itemize}[leftmargin=1cm]
+    \item \textbf{Degree}, University, Year
+    \item \textbf{Degree}, University, Year
+\end{itemize}
+
+% Experience
+\section*{Experience}
+\begin{itemize}[leftmargin=1cm]
+    \item \textbf{Job Title}, Company, Year-Present
+    \begin{itemize}
+        \item Description of responsibilities and achievements.
+    \end{itemize}
+    \item \textbf{Job Title}, Company, Year-Year
+    \begin{itemize}
+        \item Description of responsibilities and achievements.
+    \end{itemize}
+\end{itemize}
+
+% Skills
+\section*{Skills}
+\begin{itemize}[leftmargin=1cm]
+    \item Skill 1
+    \item Skill 2
+    \item Skill 3
+\end{itemize}
+
+% References
+\section*{References}
+Available upon request.
+
+\end{document}
