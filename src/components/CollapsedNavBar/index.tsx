@@ -96,7 +96,12 @@ const CollapsedNavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceR
             />
           </Grid>
           <Grid item xs={11} sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
-            <img src={logo} alt="logo" style={{ height: "40px", width: "40px", padding: "0 10px" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}/>
+            <Box
+              sx={{ display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
+              onClick={() => scrollToSection(homeRef)}
+            >
+              <img src={logo} alt="logo" width="30px" height="30px"/>
+            </Box>
           </Grid>
         </Grid>
         {/* </Button> */}

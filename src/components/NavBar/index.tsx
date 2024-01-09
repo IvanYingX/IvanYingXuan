@@ -92,7 +92,12 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef, educa
               {ref.name}
             </Typography>
           ))}
-          <img src={logo} alt="logo" width="30px" height="30px" style={{ cursor: "pointer" }}/>
+          <Box
+            sx={{ display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
+            onClick={() => scrollToSection(homeRef)}
+          >
+            <img src={logo} alt="logo" width="30px" height="30px"/>
+          </Box>
           {secondHalf.map((ref, index) => (
             <Typography
             key={`nav-button-${ref.name}`}

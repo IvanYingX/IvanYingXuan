@@ -23,7 +23,7 @@ const DownloadButton: React.FC = () => {
         },
         fontSize: "1rem",
       }}
-      href='https://ivan-resume-public-files.s3.eu-west-1.amazonaws.com/Ivan_Resume_v3-compressed.pdf'
+      href='https://ivan-resume-public-files.s3.eu-west-1.amazonaws.com/Ivan-Ying-Xuan-Resume.pdf'
       target="_blank"
       download="Ivan_Resume.pdf"
     >

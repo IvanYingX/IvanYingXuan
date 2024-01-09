@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { NotFound, NavBar } from './components';
+import { NotFound } from './components';
 import MainApp from './routes/MainApp';
 import { useRef, useEffect } from 'react';
 

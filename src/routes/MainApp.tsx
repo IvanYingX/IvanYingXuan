@@ -35,10 +35,9 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
 
   return (
     <>
-      {isPhone && <CollapsedNavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
-      {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
-      {/* <CollapsedNavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/>
-      <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> */}
+      {/* {isPhone && <CollapsedNavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> } */}
+      {/* {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> } */}
+      <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/>
       <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} >
         <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
           <Home/>
@@ -72,7 +71,6 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
             <ArrowUpwardIcon />
           </Button>
         </Fade>
-        {/* } */}
       </Box>
     </>
   );

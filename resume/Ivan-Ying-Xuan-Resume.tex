@@ -1,0 +1,159 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+%% AltaCV uses the fontawesome5 and academicons fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+%% Fork v1.6.5c: Overwriting sloppy environment to ignore any spaces and be used to solve overlapping cvtags
+\newenvironment{sloppypar*}{\sloppy\ignorespaces}{\par}
+
+% Change the page layout if you need to
+\geometry{left=1.2cm,right=1.2cm,top=1cm,bottom=1cm,columnsep=0.75cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Fork (before v1.6.5a): Change the color codes to test your personal variant on any mode
+\ifdarkmode%
+  \definecolor{PrimaryColor}{HTML}{C69749}
+  \definecolor{SecondaryColor}{HTML}{D49B54}
+  \definecolor{ThirdColor}{HTML}{1877E8}
+  \definecolor{BodyColor}{HTML}{ABABAB}
+  \definecolor{EmphasisColor}{HTML}{ABABAB}
+  \definecolor{BackgroundColor}{HTML}{191919}
+\else%
+  \definecolor{PrimaryColor}{HTML}{001F5A}
+  \definecolor{SecondaryColor}{HTML}{0039AC}
+  \definecolor{ThirdColor}{HTML}{F3890B}
+  \definecolor{BodyColor}{HTML}{666666}
+  \definecolor{EmphasisColor}{HTML}{2E2E2E}
+  \definecolor{BackgroundColor}{HTML}{E2E2E2}
+\fi%
+
+\colorlet{name}{PrimaryColor}
+\colorlet{tagline}{SecondaryColor}
+\colorlet{aboutme}{EmphasisColor}
+\colorlet{heading}{PrimaryColor}
+\colorlet{headingrule}{ThirdColor}
+\colorlet{subheading}{SecondaryColor}
+\colorlet{accent}{SecondaryColor}
+\colorlet{emphasis}{EmphasisColor}
+\colorlet{body}{BodyColor}
+\pagecolor{BackgroundColor}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\small\bfseries}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+%% \addbibresource{main.bib}
+
+\begin{document}
+    \name{Iv\'an Ying Xuan}
+    \tagline{Full Stack Developer}
+    \aboutme{A full stack developer with a background in chemical engineering who bridges the gap between backend and frontend to deliver user-centric web solutions by implementing robust features and optimizing website performance}
+
+    \personalinfo{
+        \email{ivan.ying.xuan@gmail.com}\\
+        \medskip
+        \phone{622588772}\\
+        \medskip
+        \linkedin{ivanyingxuan}\\
+        \medskip
+        \github{IvanYingX}\\
+        \medskip
+        \homepage{ivanyingxuan.com}\\
+    }
+    \makecvheader
+    \columnratio{0.7}
+    \begin{paracol}{2}
+        \cvsection{Experience}
+            \cvevent{Full Stack Developer}{AiCore}{06 2022 -- Ongoing}{London, UK}
+            \begin{itemize}
+                \item Engineered backend systems using AWS API Gateway and Lambda, streamlining database communication and boosting endpoint efficiency by 40\%.
+                \item Overhauled website features using React, which resulted in a \textasciitilde25\% increase in user engagement and a reduction in page load times by 35\%.
+                \item Architected PostgreSQL database schemas, which allowed an increased communication between teams that needed to access the database.
+                \item Integrated APIs like Intercom, Hubspot, and Discord into the site, which increased customer interaction by 35\% and improved service accessibility.
+                \item Devised robust testing protocols using Jest and VITest, which decreased bug reports by \textasciitilde95\% and enhanced website uptime to 99.999\%.
+                \item Collaborated in a major initiative to transition the company's data analytics infrastructure to AWS, which achieved a remarkable reduction of up to 72\% in data retrieval times.
+                \item Implemented a suite of custom Python scripts and leveraged GitHub Actions for the automation of daily data updates, cutting down the need for manual intervention and increased efficiency by 200\%.
+            \end{itemize}
+            \customdivider
+            
+            \cvevent{Head of Support Engineering}{AiCore}{06 2021 -- 06 2022}{London, UK}
+            \begin{itemize}
+                \item Managed and coordinated of a team that provided guidance to over 1000 students in ML, DS, programming, and cloud DevOps, resulting in enhanced learning outcomes and student performance.
+                \item Developed a comprehensive user tracking system, enhancing monitoring capabilities and improving the team's efficiency by 40\% with the automation of daily tasks.
+                \item Engineered an integration solution with Google Sheets API, automating user progress data collection, which reduced the time spent on manual data input from 10 hours to 0 hours per week.
+                \item Implemented an automated notification system using the Slack API, improving team communication efficiency and accelerating response times by 80\%.
+                \item Developed and deployed API-integrated applications, facilitating a streamlined progress-tracking system for students which led to a 100\% course completion rate on time.
+                \item Extracted and analyzed over 15k data points from job listings, which enabled the company to make data-driven decision for the development of new courses.
+            \end{itemize}
+            \customdivider
+
+            \cvevent{Academic Researcher}{Imperial College London}{01 2019 -- 01 2021}{London, UK}
+            \begin{itemize}
+                \item Collaborated with ABB industry experts to produce 4 articles on electrical power management in the Oil \& Gas industry, and presented the findings at industry conferences.
+                \item Conducted a comprehensive investigation into advanced power management techniques in the Oil \& Gas industry, contributing to a yearly cost savings of £1.5 million in the Snøhvit LNG plant.
+            \end{itemize}
+        \newpage
+        
+        \switchcolumn
+        \cvsection{Skills}
+            \cvskillsection{Tech Stack}
+                \begin{sloppypar*}
+                    \cvtags{Python, JavaScript, git, TypeScript, SQL, GitHub, React, AWS, Jest, ViTest, PyTest, Tensorflow, Matlab, PyTorch, bash, Docker, Kubernetes}
+                \end{sloppypar*}
+            \vspace{6pt}
+            \cvskillsection{Languages}
+                \begin{itemize}
+                    \item \textbf{English} - Fluent
+                    \item \textbf{Spanish} - Native
+                    \item \textbf{Mandarin} - Fluent
+                \end{itemize}
+            \vspace{6pt}
+            \cvskillsection{Certifications}
+                \begin{itemize}
+                    \item \textit{Machine Learning: From Data to Decisions} - \textbf{MIT}
+                    \item \textit{Tensorflow Developer Certificate} - \textbf{Tensorflow}
+                    \item \textit{Microsoft Azure Fundamentals} - \textbf{Microsoft}
+                    \item \textit{Microsoft Azure AI Fundamentals} - \textbf{Microsoft}
+                \end{itemize}
+
+        \cvsection{Education}
+            \begin{sloppypar}
+                \cveducation{Data Science and Machine\\ Learning}{AiCore}{10 2020 -- 06 2021}
+                \customdivider
+                \cveducation{PhD in Process and Chemical\\ Engineering}{Imperial College\\ London}{09 2015 -- 09 2019}
+                \customdivider
+                \cveducation{MSc in Chemical Engineering}{\\Imperial College London}{09 2014 -- 09 2015}
+                \customdivider
+                \cveducation{BSc in Chemical Engineering}{\\Polytechnic University of Madrid}{09 2009 -- 09 2014}
+            \end{sloppypar}
+        
+    \end{paracol}
+\end{document}

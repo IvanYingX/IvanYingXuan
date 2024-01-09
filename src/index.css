@@ -84,9 +84,9 @@ code {
 }
 
 .rotating-words-container {
-  height: 37px;
+  height: 34px;
   overflow: hidden;
-  line-height: 37px;
+  line-height: 35px;
 }
 
 .rotating-words-container h5 {
