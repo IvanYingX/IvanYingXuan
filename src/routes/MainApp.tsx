@@ -7,7 +7,7 @@ import { Box, Button, Fade } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import Education from '../pages/Education';
 import { NavBar } from '../components';
-import CollapsedNavBar from '../components/CollapsedNavBar';
+import CollapsedApp from '../components/CollapsedAppBar';
 import { useIsPhone } from '../hooks';
 
 type MainAppProps = {
@@ -35,9 +35,9 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
 
   return (
     <>
-      {/* {isPhone && <CollapsedNavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> } */}
-      {/* {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> } */}
-      <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/>
+      {isPhone && <CollapsedApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
+      {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
+      {/* <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> */}
       <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} >
         <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
           <Home/>

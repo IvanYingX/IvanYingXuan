@@ -82,12 +82,12 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef, educa
         <Stack direction="row" spacing={4} sx={{ alignItems: "center", display: "flex" }}>
           {firstHalf.map((ref, index) => (
             <Typography
-            key={`nav-button-${ref.name}`}
-            onClick={() => scrollToSection(ref.sectionRef)}
-            sx={{ color: "white", cursor: "pointer", fontSize: "1.2rem" }}
-            fontWeight="bold"
-            onMouseEnter={(e) => e.currentTarget.style.textDecoration = "underline"}
-            onMouseLeave={(e) => e.currentTarget.style.textDecoration = "none"}
+              key={`nav-button-${ref.name}`}
+              onClick={() => scrollToSection(ref.sectionRef)}
+              sx={{ color: "white", cursor: "pointer", fontSize: "1.2rem" }}
+              fontWeight="bold"
+              onMouseEnter={(e) => e.currentTarget.style.textDecoration = "underline"}
+              onMouseLeave={(e) => e.currentTarget.style.textDecoration = "none"}
             >
               {ref.name}
             </Typography>

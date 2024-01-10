@@ -52,6 +52,22 @@ code {
   transition: all 1s ease-in-out;
 }
 
+.collapsed-menu {
+  transform: translateX(-100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.collapsed-menu .menu-item {
+  transform: translateX(-200%);
+  filter: blur(5px);
+  transition: all 0.1s ease-in-out;
+}
+
+.visible-menu {
+  transform: translateX(0);
+  transition: all 0.2s ease-in-out;
+}
+
 #full-name {
   font-size: 4em;
   font-weight: 700;
@@ -93,6 +109,15 @@ code {
   position: relative;
   animation: rotating-words 10s ease-in-out infinite;
   font-weight: bold;
+}
+
+@keyframes collapseMenu {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeIn {
