@@ -1,5 +1,6 @@
 import ImperialCollegeLogo from '../../images/icl.png';
 import AiCoreLogo from '../../images/aicore_logo.webp';
+import UPMLogo from '../../images/UPM.png';
 
 export const steps = [
   {
@@ -26,6 +27,29 @@ export const steps = [
     from_date: "2015",
     to_date: "2019",
     company: "Imperial College London",
+    type: "education"
+  },
+  {
+    title: "MSc in Chemical Engineering",
+    description: [
+      `Obtained distinction in both taught modules and research project, demonstrating a strong academic record and a deep understanding of chemical engineering principles and practices.`,
+      `Completed a research project on the design and development of a learning platform for process control, demonstrating the ability to conduct independent research and apply theoretical knowledge to practical applications.`
+    ],
+    logo: ImperialCollegeLogo,
+    from_date: "2014",
+    to_date: "2015",
+    company: "Imperial College London",
+    type: "education"
+  },
+  {
+    title: "BSc in Chemical Engineering",
+    description: [
+      `Graduated with first-class honors`,
+    ],
+    logo: UPMLogo,
+    from_date: "2009",
+    to_date: "2014",
+    company: "Polytechnic University of Madrid",
     type: "education"
   }
 ];

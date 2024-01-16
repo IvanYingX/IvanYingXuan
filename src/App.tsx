@@ -11,6 +11,7 @@ function App() {
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const educationRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
@@ -41,7 +42,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<MainApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef} />}
+          element={<MainApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef} projectsRef={projectsRef} />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

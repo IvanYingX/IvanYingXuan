@@ -8,10 +8,11 @@ type AppBarProps = {
   aboutRef: React.RefObject<HTMLDivElement>;
   experienceRef: React.RefObject<HTMLDivElement>;
   educationRef: React.RefObject<HTMLDivElement>;
+  projectsRef: React.RefObject<HTMLDivElement>;
 };
 
-const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceRef, educationRef }) => {
-  const [disappear, setDisappear] = useState(false);
+const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef }) => {
+  const [hideTopBar, setHideTopBar] = useState(false);
   // Set a state for the horizontal nav bar that appears when the TableRowsIcon is clicked
   const [navBarShown, setNavBarShown] = useState(false);
 
@@ -24,6 +25,8 @@ const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceR
       experienceRef.current?.scrollIntoView({ behavior: 'smooth' });
     } else if (sectionRef === educationRef) {
       educationRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (sectionRef === projectsRef) {
+      projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -31,10 +34,10 @@ const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceR
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 0) {
-        setDisappear(true);
+        setHideTopBar(true);
       }
       else {
-        setDisappear(false);
+        setHideTopBar(false);
       }
     };
 
@@ -47,6 +50,7 @@ const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceR
     { sectionRef: homeRef, name: "Home"},
     { sectionRef: aboutRef, name: "About"},
     { sectionRef: experienceRef, name: "Experience"},
+    { sectionRef: projectsRef, name: "Projects"},
     { sectionRef: educationRef, name: "Education"}
   ]
 
@@ -120,8 +124,8 @@ const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceR
           padding: "10px 0",
           // margin: "auto",
           width: "100%",
-          backgroundColor: disappear ?  "#444" : "rgba(0, 0, 0, 0)",
-          animation: disappear ? "disappear 0.5s ease" : "appear 0.5s ease",
+          backgroundColor: hideTopBar && !navBarShown ? "#444" : "rgba(0, 0, 0, 0)",
+          animation: hideTopBar && !navBarShown ? "disappear 0.5s ease" : "appear 0.5s ease",
         }}
       >
         <Box
@@ -156,7 +160,7 @@ const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceR
             <Grid
               item
               xs={navBarShown ? 8 : 11}
-              sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", transition: "0.2s" }}
+              sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", transition: "0.3s ease" }}
             >
               <Box
                 sx={{ display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}

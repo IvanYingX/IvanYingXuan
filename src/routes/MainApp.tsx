@@ -2,6 +2,7 @@ import React, { RefObject, useEffect } from 'react';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Experience from '../pages/Experience';
+import ProjectPage from '../pages/Projects';
 import backgroundImage from '../images/8.jpg';
 import { Box, Button, Fade } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -15,9 +16,10 @@ type MainAppProps = {
   aboutRef: RefObject<HTMLDivElement>;
   experienceRef: RefObject<HTMLDivElement>;
   educationRef: RefObject<HTMLDivElement>;
+  projectsRef: RefObject<HTMLDivElement>;
 };
 
-const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, educationRef }) => {
+const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef }) => {
   const [isScrollAtTop, setIsScrollAtTop] = React.useState<boolean>(true);
   useEffect(() => {
     const scrollHandler = () => {
@@ -35,8 +37,8 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
 
   return (
     <>
-      {isPhone && <CollapsedApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
-      {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> }
+      {isPhone && <CollapsedApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} />}
+      {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} />}
       {/* <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> */}
       <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} >
         <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
@@ -47,6 +49,9 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
         </Box>
         <Box ref={experienceRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="experience" >
           <Experience />
+        </Box>
+        <Box ref={projectsRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="projects" >
+          <ProjectPage />
         </Box>
         <Box ref={educationRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="education" >
           <Education />
