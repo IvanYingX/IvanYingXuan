@@ -5,7 +5,7 @@ export const projects = [
     title: 'Serverless Portfolio Website with Automated CI/CD Deployment',
     description: [
       `Engineered a fully serverless portfolio website using AWS, leveraging services like S3 for hosting HTML, CSS, and JavaScript files, and integrating CloudFront for content delivery. Ensured website security by configuring HTTPS redirection and SSL certification via AWS Certificate Manager.`,
-      `Acquired and set up a custom domain name (dillonmeacham.net) using AWS Route53 as the domain registrar, creating A records to link the domain with the CloudFront distribution for a seamless user experience.`,
+      `Acquired and set up a custom domain name using AWS Route53 as the domain registrar, creating A records to link the domain with the CloudFront distribution for a seamless user experience.`,
       `Crafted a custom, interactive resume from scratch using React, showcasing advanced front-end development skills and a deep understanding of modern web technologies for creating dynamic, responsive user interfaces.`,
       `Integrated CI/CD pipelines using GitHub Actions, automating the deployment process with YAML workflows for seamless and efficient updates to the web application directly from VSCode.`
     ],
