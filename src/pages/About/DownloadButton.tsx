@@ -1,9 +1,7 @@
 import { Button } from '@mui/material';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { useIsPhone } from '../../hooks';
 
 const DownloadButton: React.FC = () => {
-  const isPhone = useIsPhone();
   return (
     <Button
       sx={{
@@ -14,7 +12,6 @@ const DownloadButton: React.FC = () => {
         fontWeight: 600,
         display: "flex",
         // marginLeft: "auto",
-        marginRight: isPhone ? "auto" : "50px",
         padding: "5px 30px",
         ":hover": {
           backgroundColor: "#555",

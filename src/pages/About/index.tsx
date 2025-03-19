@@ -7,12 +7,10 @@ import { useIsPhone } from '../../hooks';
 const About: React.FC = () => {
   const isPhone = useIsPhone();
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between", width: "90%"}} className="hidden">
-      {!isPhone && (
-        <Box sx={{alignItems: "center", marginTop: "auto", marginBottom: "auto", flex: "1 1 40%"}}>
-          <ProfilePicture />
-        </Box>
-      )}
+    <Box sx={{ display: "flex", justifyContent: "space-between", width: "90%", flexDirection: isPhone ? "column" : "row"}} className="hidden">
+      <Box sx={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: isPhone ? "1 1 100%" : "1 1 40%"}}>
+        <ProfilePicture />
+      </Box>
       <Box sx={{ alignItems: "center", marginTop: "auto", marginBottom: "auto", flex: isPhone ? "1 1 100%" : "1 1 60%"}}>
         <Typography variant="h3">About Me</Typography>
         <Typography variant="body1" sx={{ marginTop: "20px" }}>
@@ -30,13 +28,9 @@ const About: React.FC = () => {
           allows me to deliver high-quality, industry-tailored web solutions that meet business
           needs while elevating user experiences through thoughtful design and optimized performance.
         </Typography>
-        <DownloadButton />
-        {isPhone && (
-          <Box sx={{ marginTop: "30px" }}>
-            {/* <ProfilePicture /> */}
-            <DownloadButton />
-          </Box>
-        )}
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          <DownloadButton />
+        </Box>
       </Box>
     </Box>
   );
