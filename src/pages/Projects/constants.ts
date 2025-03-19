@@ -1,15 +1,15 @@
-import AiCoreLogo from '../../images/aicore_logo.webp';
-
+import Portfolio from '../../images/Portfolio.png';
 export const projects = [
   {
     title: 'Serverless Portfolio Website with Automated CI/CD Deployment',
     description: [
-      `Engineered a fully serverless portfolio website using AWS, leveraging services like S3 for hosting HTML, CSS, and JavaScript files, and integrating CloudFront for content delivery. Ensured website security by configuring HTTPS redirection and SSL certification via AWS Certificate Manager.`,
-      `Acquired and set up a custom domain name using AWS Route53 as the domain registrar, creating A records to link the domain with the CloudFront distribution for a seamless user experience.`,
-      `Crafted a custom, interactive resume from scratch using React, showcasing advanced front-end development skills and a deep understanding of modern web technologies for creating dynamic, responsive user interfaces.`,
-      `Integrated CI/CD pipelines using GitHub Actions, automating the deployment process with YAML workflows for seamless and efficient updates to the web application directly from VSCode.`
+      `Built a serverless portfolio website on AWS, using S3 for hosting and CloudFront for content delivery, secured with HTTPS via AWS Certificate Manager.`,
+      `Configured a custom domain with Route 53, linking it to CloudFront for seamless user access.`,
+      `Developed an interactive resume with React, demonstrating advanced front-end skills and responsive UI design.`,
+      `Automated deployment with GitHub Actions, using YAML workflows for seamless CI/CD.`
     ],
-    image: AiCoreLogo
+    url: "https://github.com/IvanYingX/IvanYingXuan",
+    image: Portfolio
   },
   {
     title: 'Cloud-Based Data Analytics Optimization and Automation Project',
@@ -18,7 +18,6 @@ export const projects = [
       `Engineered and implemented a suite of custom Python scripts, integrated with GitHub Actions, to automate daily data updates. This innovation reduced the need for manual processes and enhanced operational efficiency by 200%.`,
       `Employed AWS Quicksight for advanced data visualization, enabling the company to derive actionable insights from complex datasets and make informed business decisions.`
     ],
-    image: AiCoreLogo
   },
   {
     title: 'Platform Engagement Tracking and Automation System',
@@ -28,7 +27,6 @@ export const projects = [
       `Orchestrated a notification system utilizing Slack API to automatically alert team members of user progress updates, enhancing team collaboration and enabling swift response to user engagement trends.`,
       `Architected a synchronized workflow leveraging webhooks and GitHub Actions to ensure seamless operation of the tracking, data population, and notification systems, resulting in an integrated ecosystem that operates with high efficiency and minimal manual oversight.`
     ],
-    image: AiCoreLogo
   },
   {
     title: "Job Market Analysis and Skills Extraction Using NLP",
@@ -38,7 +36,6 @@ export const projects = [
       `Applied NLP methodologies to extract key skills and requirements from job descriptions, effectively decoding the nuances of various job specifications.`,
       `Analyzed the processed data to uncover trends and insights that informed strategic business decisions, providing a data-driven approach to understanding job market demands.`
     ],
-    image: AiCoreLogo
   },
   {
     title: 'IKEA Furniture Image Generation with GANs',
@@ -48,6 +45,5 @@ export const projects = [
       `Utilized advanced machine learning techniques to train a Generative Adversarial Network (GAN), calibrating it to generate realistic and varied images of furniture based on the attributes of the collected IKEA product images.`,
       `Pioneered the use of GANs within the project to synthesize new furniture designs, pushing the boundaries of creative design and potential manufacturing applications.`,
     ],
-    image: AiCoreLogo
   }
 ];

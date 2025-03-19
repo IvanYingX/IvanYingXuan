@@ -13,7 +13,7 @@ const DownloadButton: React.FC = () => {
         color: "#444",
         fontWeight: 600,
         display: "flex",
-        marginLeft: "auto",
+        // marginLeft: "auto",
         marginRight: isPhone ? "auto" : "50px",
         padding: "5px 30px",
         ":hover": {

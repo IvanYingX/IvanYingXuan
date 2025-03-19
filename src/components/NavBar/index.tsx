@@ -9,9 +9,10 @@ type NavBarProps = {
   experienceRef: React.RefObject<HTMLDivElement>;
   educationRef: React.RefObject<HTMLDivElement>;
   projectsRef: React.RefObject<HTMLDivElement>;
+  contactRef: React.RefObject<HTMLDivElement>;
 };
 
-const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef }) => {
+const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef, contactRef }) => {
   const [disappear, setDisappear] = useState(false);
 
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
@@ -25,6 +26,8 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef, educa
       educationRef.current?.scrollIntoView({ behavior: 'smooth' });
     } else if (sectionRef === projectsRef) {
       projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (sectionRef === contactRef) {
+      contactRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -33,7 +36,8 @@ const NavBar: React.FC<NavBarProps> = ({ homeRef, aboutRef, experienceRef, educa
     { sectionRef: aboutRef, name: "About"},
     { sectionRef: experienceRef, name: "Experience"},
     { sectionRef: projectsRef, name: "Projects"},
-    { sectionRef: educationRef, name: "Education"}
+    { sectionRef: educationRef, name: "Education"},
+    { sectionRef: contactRef, name: "Contact"}
   ]
 
   const firstHalf = refs.slice(0, Math.floor(refs.length / 2));

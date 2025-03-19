@@ -1,92 +1,124 @@
-import { Typography, Box, Collapse, Stack, Modal } from "@mui/material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Typography, Box } from "@mui/material";
+import { useState } from "react";
 import ExperienceDescription from "../ExperienceDescription";
-import { useEffect, useState } from "react";
-import CloseIcon from '@mui/icons-material/Close';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 interface IProjectDescription {
   title: string;
-  image: string;
+  image?: string;
   description: Array<string> | string;
+  url?: string;
 }
 
 interface IProjectProps {
   project: IProjectDescription;
-  toggleAllExpanded: boolean | undefined;
 }
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  height: '50svh',
-  maxWidth: '90svw',
-  outline: 'none',
-};
+const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
+  const [showDescription, setShowDescription] = useState<boolean>(false);
 
-
-const ProjectDescription: React.FC<IProjectProps> = ({
-  project,
-  toggleAllExpanded,
-}) => {
-  const [expanded, setExpanded] = useState<boolean>(true);
-  const [openImageModal, setOpenImageModal] = useState<boolean>(false);
-
-  const handleClose = () => {
-    setOpenImageModal(false);
-    console.log('openImageModal', openImageModal)
-  }
-  const handleOpen = () => {
-    setOpenImageModal(true);
-    console.log('openImageModal', openImageModal)
-  }
-  useEffect(() => {
-    if (toggleAllExpanded) {
-      setExpanded(true);
-    } else {
-      setExpanded(false);
+  const handleToggle = () => {
+    if (project.image) {
+      setShowDescription((prev) => !prev);
     }
-  }, [toggleAllExpanded]);
+  };
 
-  const { title, image, description } = project;
+  const { title, image, description, url } = project;
 
   return (
-    <Box className="hidden">
-      <Stack direction="row" spacing={3} sx={{ marginBottom: "20px", alignItems: "center" }}>
-        <Stack direction="column" spacing={1} sx={{ width: "80%", cursor: "pointer" }}>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-              {title}
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", justifyItems: "center" }} onClick={() => handleOpen()}>
-            Open Image
-          </Box>
-          <Modal
-            open={openImageModal}
-            onClose={handleClose}
-            aria-labelledby="image-modal"
-            aria-describedby="image-modal-description"
+    <Box
+      sx={{
+        minHeight: "400px",
+        paddingX: "20px",
+        perspective: image ? "1000px" : "none",
+      }}
+    >
+      <Box sx={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold", marginRight: "10px" }}>
+          {title}
+        </Typography>
+        {url && (
+          <LaunchIcon onClick={() => window.open(url, "_blank")} sx={{ cursor: "pointer" }}/>
+        )}
+      </Box>
+      <Box onClick={handleToggle}>
+        {image ? (
+          // Flipping behavior when image is present
+          <Box
+          sx={{
+            width: "100%",
+            height: "300px",
+            position: "relative",
+            transformStyle: "preserve-3d",
+            transition: "transform 0.6s",
+            transform: showDescription ? "rotateY(180deg)" : "rotateY(0deg)",
+          }}
+        >
+          {/* Front - Image */}
+          <Box
+            sx={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              backfaceVisibility: "hidden",
+              opacity: showDescription ? 0 : 1,
+              visibility: showDescription ? "hidden" : "visible",
+              transition: showDescription
+                ? "opacity 0.2s ease-in-out, visibility 0.2s ease-in-out"
+                : "opacity 0.4s ease-in, visibility 0.4s ease-in",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "transparent",
+              borderRadius: "8px",
+            }}
           >
-            <Box
-              sx={style}
-            >
-              <CloseIcon onClick={() => handleClose()} sx={{ position: 'absolute', top: '5px', right: '5px', cursor: 'pointer' }} />
-              <img src={image} alt="modal" style={{ maxWidth: '100%', maxHeight: '100%', margin: 'auto', display: 'block' }} />
-              
-            </Box>
-          </Modal>
-          <Stack direction="row" spacing={2} sx={{ marginBottom: "20px", alignItems: "center" }}>
-            <KeyboardArrowUpIcon sx={{ cursor: "pointer", transform: expanded ? "rotate(180deg)" : "rotate(0deg)", transition: "0.2s" }} onClick={() => setExpanded(!expanded)} />
-          </Stack>
-        </Stack>
-      </Stack>
-      <Collapse in={expanded}>
-        <ExperienceDescription description={description} />
-      </Collapse>
+            <img src={image} alt="project" style={{ maxWidth: "100%", maxHeight: "100%" }} />
+          </Box>
+
+          {/* Back - Description */}
+          <Box
+            sx={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              backfaceVisibility: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "8px",
+              transform: "rotateY(180deg)",
+              backgroundColor: "transparent",
+              color: "inherit",
+            }}
+          >
+            <ExperienceDescription description={description} />
+          </Box>
+        </Box>
+      ) : (
+        // Just show description if there's no image
+        <Box
+          sx={{
+            width: "100%",
+            height: "auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px",
+            backgroundColor: "transparent",
+            color: "inherit",
+          }}
+        >
+            <ExperienceDescription description={description} />
+          </Box>
+        )}
+      </Box>
     </Box>
   );
-}
+};
 
 export default ProjectDescription;

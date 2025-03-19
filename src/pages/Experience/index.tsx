@@ -1,35 +1,33 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import ExperienceStep from '../../components/ExperienceStep';
-import ToggleButton from '../../components/ToggleButton';
 import { steps } from './constants';
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import "./styles.css";
 
 const Experience: React.FC = () => {
-  const [toggleAllExpanded, setToggleAllExpanded] = React.useState<boolean>(true);
-
-  const toggleAll = () => {
-    setToggleAllExpanded(!toggleAllExpanded);
-  }
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: false,
+  };
 
   return (
     <Box sx={{ alignItems: "center", marginLeft: "auto", marginRight: "auto", width: "80%" }}>
       <Typography variant="h3" sx={{ marginBottom: "20px" }} className='hidden'>Experience</Typography>
-      <Stack direction="column" spacing={5} sx={{ marginBottom: "20px" }}>
-        <ToggleButton
-          show={toggleAllExpanded}
-          textOn='Collapse Descriptions'
-          textOff='Expand Descriptions'
-          onClick={toggleAll}
-        />
+      <Slider {...settings}>
         {steps.map((step) => (
           <ExperienceStep
             key={`experience-step-${step.title}`}
             step={step}
-            toggleAllExpanded={toggleAllExpanded}
           />
         ))}
-      </Stack>      
+      </Slider>
     </Box>
   );
 };

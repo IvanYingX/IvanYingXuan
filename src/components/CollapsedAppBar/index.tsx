@@ -9,9 +9,10 @@ type AppBarProps = {
   experienceRef: React.RefObject<HTMLDivElement>;
   educationRef: React.RefObject<HTMLDivElement>;
   projectsRef: React.RefObject<HTMLDivElement>;
+  contactRef: React.RefObject<HTMLDivElement>;
 };
 
-const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef }) => {
+const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef, contactRef }) => {
   const [hideTopBar, setHideTopBar] = useState(false);
   // Set a state for the horizontal nav bar that appears when the TableRowsIcon is clicked
   const [navBarShown, setNavBarShown] = useState(false);
@@ -27,6 +28,8 @@ const CollapsedAppBar: React.FC<AppBarProps> = ({ homeRef, aboutRef, experienceR
       educationRef.current?.scrollIntoView({ behavior: 'smooth' });
     } else if (sectionRef === projectsRef) {
       projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (sectionRef === contactRef) {
+      contactRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 

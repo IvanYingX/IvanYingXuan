@@ -9,12 +9,11 @@ const About: React.FC = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "space-between", width: "90%"}} className="hidden">
       {!isPhone && (
-        <Box sx={{alignItems: "center", marginTop: "auto", marginBottom: "auto", flex: "1 1 30%"}}>
+        <Box sx={{alignItems: "center", marginTop: "auto", marginBottom: "auto", flex: "1 1 40%"}}>
           <ProfilePicture />
-          <DownloadButton />
         </Box>
       )}
-      <Box sx={{ alignItems: "center", marginTop: "auto", marginBottom: "auto", flex: isPhone ? "1 1 100%" : "1 1 70%"}}>
+      <Box sx={{ alignItems: "center", marginTop: "auto", marginBottom: "auto", flex: isPhone ? "1 1 100%" : "1 1 60%"}}>
         <Typography variant="h3">About Me</Typography>
         <Typography variant="body1" sx={{ marginTop: "20px" }}>
           I am a versatile Full Stack Developer with a background in chemical engineering,
@@ -31,6 +30,7 @@ const About: React.FC = () => {
           allows me to deliver high-quality, industry-tailored web solutions that meet business
           needs while elevating user experiences through thoughtful design and optimized performance.
         </Typography>
+        <DownloadButton />
         {isPhone && (
           <Box sx={{ marginTop: "30px" }}>
             {/* <ProfilePicture /> */}

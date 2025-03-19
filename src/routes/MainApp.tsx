@@ -3,10 +3,10 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Experience from '../pages/Experience';
 import ProjectPage from '../pages/Projects';
-import backgroundImage from '../images/8.jpg';
 import { Box, Button, Fade } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import Education from '../pages/Education';
+import ContactForm from '../components/ContactForm';
 import { NavBar } from '../components';
 import CollapsedApp from '../components/CollapsedAppBar';
 import { useIsPhone } from '../hooks';
@@ -17,9 +17,10 @@ type MainAppProps = {
   experienceRef: RefObject<HTMLDivElement>;
   educationRef: RefObject<HTMLDivElement>;
   projectsRef: RefObject<HTMLDivElement>;
+  contactRef: RefObject<HTMLDivElement>;
 };
 
-const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef }) => {
+const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, educationRef, projectsRef, contactRef }) => {
   const [isScrollAtTop, setIsScrollAtTop] = React.useState<boolean>(true);
   useEffect(() => {
     const scrollHandler = () => {
@@ -31,20 +32,20 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
     };
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [homeRef, aboutRef, experienceRef, isScrollAtTop]);
+  }, [homeRef, aboutRef, experienceRef, educationRef, projectsRef, contactRef, isScrollAtTop]);
 
   const isPhone = useIsPhone();
 
   return (
     <>
-      {isPhone && <CollapsedApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} />}
-      {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} />}
+      {isPhone && <CollapsedApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} contactRef={contactRef} />}
+      {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} contactRef={contactRef} />}
       {/* <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> */}
-      <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} >
+      {/* <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} > */}
         <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
           <Home/>
         </Box>
-        <Box ref={aboutRef} className="container" sx={{ display: "flex", flexDirection: "column" }} id="about">
+        <Box ref={aboutRef} className="about container" sx={{ display: "flex", flexDirection: "column" }} id="about">
           <About />
         </Box>
         <Box ref={experienceRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="experience" >
@@ -55,6 +56,9 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
         </Box>
         <Box ref={educationRef} className="container" sx={{ display: "flex", flexDirection: "flex-start" }} id="education" >
           <Education />
+        </Box>
+        <Box ref={contactRef} className="home" sx={{ display: "flex", flexDirection: "flex-start" }} id="contact" >
+          <ContactForm />
         </Box>
         <Fade in={!isScrollAtTop} timeout={500}>
           <Button
@@ -76,7 +80,7 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
             <ArrowUpwardIcon />
           </Button>
         </Fade>
-      </Box>
+      {/* </Box> */}
     </>
   );
 };
