@@ -5,7 +5,7 @@ import { steps } from './constants';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import "./styles.css";
+import '../../index.css';
 
 const Experience: React.FC = () => {
   const settings = {
@@ -14,7 +14,7 @@ const Experience: React.FC = () => {
     speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: false,
+    adaptiveHeight: true,
   };
 
   return (

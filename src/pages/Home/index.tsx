@@ -47,6 +47,7 @@ const Home: React.FC = () => {
           }}
           onClick={() => window.scrollTo({ top: homeSectionBottom, behavior: "smooth" })}
         >
+          About
           <KeyboardDoubleArrowDownIcon />
         </Button> 
 

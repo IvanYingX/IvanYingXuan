@@ -1,5 +1,0 @@
-.slick-dots li.slick-active button::before{
-    color: #1976d2 !important; /* Highlight color for active dot */
-    font-weight: bold;
-    font-size: 12px !important;
-}

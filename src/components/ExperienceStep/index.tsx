@@ -1,7 +1,5 @@
-import { Typography, Box, Collapse, Stack } from "@mui/material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Typography, Box, Stack } from "@mui/material";
 import ExperienceDescription from "../ExperienceDescription";
-import { useEffect, useState } from "react";
 
 interface IExperienceStep {
   title: string;
@@ -23,7 +21,7 @@ const ExperienceStep: React.FC<ExperienceStepProps> = ({
   const { title, company, from_date, to_date, description, logo } = step;
 
   return (
-    <Box className="hidden" sx={{ minHeight: '400px', paddingX: "20px" }}>
+    <Box className="hidden" sx={{ paddingX: "20px" }}>
       <Stack direction="row" spacing={3} sx={{ marginBottom: "20px", alignItems: "center" }}>
         <Box sx={{ position: 'relative', width: "8%" }}>
           <img src={logo} alt="logo" style={{ width: "100%" }} />

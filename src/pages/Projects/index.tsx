@@ -5,7 +5,7 @@ import { projects } from './constants';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import "./styles.css";
+import '../../index.css';
 
 const ProjectPage: React.FC = () => {
 
@@ -15,7 +15,7 @@ const ProjectPage: React.FC = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: false
+    adaptiveHeight: true
   };
 
   return (

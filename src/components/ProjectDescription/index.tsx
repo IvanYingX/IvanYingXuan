@@ -1,13 +1,13 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Chip } from "@mui/material";
 import { useState } from "react";
 import ExperienceDescription from "../ExperienceDescription";
 import LaunchIcon from '@mui/icons-material/Launch';
-
 interface IProjectDescription {
   title: string;
   image?: string;
   description: Array<string> | string;
   url?: string;
+  techStack?: Array<string>;
 }
 
 interface IProjectProps {
@@ -23,12 +23,11 @@ const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
     }
   };
 
-  const { title, image, description, url } = project;
+  const { title, image, description, url, techStack } = project;
 
   return (
     <Box
       sx={{
-        minHeight: "400px",
         paddingX: "20px",
         perspective: image ? "1000px" : "none",
       }}
@@ -41,6 +40,14 @@ const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
           <LaunchIcon onClick={() => window.open(url, "_blank")} sx={{ cursor: "pointer" }}/>
         )}
       </Box>
+
+      {techStack && (
+        <Box sx={{ display: "flex", width: "100%", flexDirection: "row", marginBottom: "20px", flexWrap: "wrap", rowGap: "10px" }}>
+          {techStack.map((tech) => (
+            <Chip key={tech} label={tech} variant="outlined"sx={{ marginRight: "10px", color: "#222", backgroundColor: "#999", borderColor: "#999", fontSize: "14px" }}/>
+          ))}
+        </Box>
+      )}
       <Box onClick={handleToggle}>
         {image ? (
           // Flipping behavior when image is present
@@ -69,7 +76,6 @@ const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
                 ? "opacity 0.2s ease-in-out, visibility 0.2s ease-in-out"
                 : "opacity 0.4s ease-in, visibility 0.4s ease-in",
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
               backgroundColor: "transparent",
               borderRadius: "8px",
@@ -88,7 +94,6 @@ const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
               left: 0,
               backfaceVisibility: "hidden",
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
               borderRadius: "8px",
               transform: "rotateY(180deg)",
