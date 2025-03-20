@@ -48,13 +48,20 @@ const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
           ))}
         </Box>
       )}
-      <Box onClick={handleToggle}>
+      <Box onClick={handleToggle}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "auto",
+      }}>
         {image ? (
           // Flipping behavior when image is present
           <Box
           sx={{
             width: "100%",
-            height: "300px",
+            height: "500px",
             position: "relative",
             transformStyle: "preserve-3d",
             transition: "transform 0.6s",
@@ -79,9 +86,20 @@ const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
               justifyContent: "center",
               backgroundColor: "transparent",
               borderRadius: "8px",
+              cursor: "pointer",
             }}
           >
-            <img src={image} alt="project" style={{ maxWidth: "100%", maxHeight: "100%" }} />
+            <img 
+              src={image} 
+              alt="project" 
+              style={{ 
+                width: "100%", 
+                height: "100%", 
+                objectFit: "contain", 
+                maxWidth: "100%", 
+                maxHeight: "100%" 
+              }} 
+            />
           </Box>
 
           {/* Back - Description */}
@@ -99,6 +117,7 @@ const ProjectDescription: React.FC<IProjectProps> = ({ project }) => {
               transform: "rotateY(180deg)",
               backgroundColor: "transparent",
               color: "inherit",
+              cursor: image ? "pointer" : "default",
             }}
           >
             <ExperienceDescription description={description} />

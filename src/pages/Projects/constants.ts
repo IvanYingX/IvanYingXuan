@@ -1,12 +1,29 @@
 import Portfolio from '../../images/Portfolio.png';
+import DataPlatform from '../../images/DataPlatform.png';
+import Jupyter from '../../images/GPTFinal.gif';
+import FurnitureGAN from '../../images/FurnitureGAN.GIF';
+
 export const projects = [
+  {
+    title: 'JupyterLab AI Assistant & SQL Editor',
+    description: [
+      `Developed a JupyterLab extension that integrates LLMs to assist users with lesson-specific questions, generate practical exercises, and create quizzes.`,
+      `Built an interactive SQL editor within JupyterLab, allowing users to query a predefined database seamlessly.`,
+      `Designed a real-time evaluation system that automatically assesses practical exercises and provides instant feedback.`,
+      `Utilized React and TypeScript to create an intuitive user interface within JupyterLab.`,
+      `Optimized the extension for smooth integration with existing Jupyter workflows, ensuring a seamless user experience.`,
+      `Implemented backend logic in Python to handle AI interactions, query execution, and grading automation.`
+    ],
+    image: Jupyter,
+    techStack: ["TypeScript", "React", "Python", "JupyterLab", "LLMs", "SQL"]
+  },
   {
     title: 'Serverless Portfolio Website with Automated CI/CD Deployment',
     description: [
       `Built a serverless portfolio website on AWS, using S3 for hosting and CloudFront for content delivery, secured with HTTPS via AWS Certificate Manager.`,
       `Configured a custom domain with Route 53, linking it to CloudFront for seamless user access.`,
       `Developed an interactive resume with React, demonstrating advanced front-end skills and responsive UI design.`,
-      `Automated deployment with GitHub Actions, using YAML workflows for seamless CI/CD.`
+      `Automated CI/CD deployment with GitHub Actions, using YAML workflows for frictionless updates.`
     ],
     url: "https://github.com/IvanYingX/IvanYingXuan",
     image: Portfolio,
@@ -15,40 +32,43 @@ export const projects = [
   {
     title: 'Cloud-Based Data Analytics Optimization and Automation Project',
     description: [
-      `Played a key role in transitioning the company's data analytics infrastructure to AWS, utilizing services like AWS Glue, AWS Athena, and DynamoDB. This strategic move resulted in a substantial 72% improvement in data retrieval times, significantly boosting overall efficiency.`,
+      `Led the migration of the company's data analytics infrastructure to AWS, leveraging Glue, Athena, and DynamoDB, improving data retrieval speeds by 72%.`,
       `Engineered and implemented a suite of custom Python scripts, integrated with GitHub Actions, to automate daily data updates. This innovation reduced the need for manual processes and enhanced operational efficiency by 200%.`,
-      `Employed AWS Quicksight for advanced data visualization, enabling the company to derive actionable insights from complex datasets and make informed business decisions.`
+      `Designed interactive data visualizations using AWS QuickSight, enabling data-driven decision-making.`
     ],
-    techStack: ["Python", "AWS Glue", "AWS Athena", "DynamoDB"]
+    image: DataPlatform,
+    techStack: ["Python", "AWS Glue", "AWS Athena", "DynamoDB", "QuickSight"]
   },
   {
     title: 'Platform Engagement Tracking and Automation System',
     description: [
-      `Developed and implemented a comprehensive tracking system to monitor user interactions and progress within the platform, employing advanced data analytics to capture key metrics that inform user engagement strategies and platform enhancements.`,
-      `Engineered a robust integration solution using Google Sheets API that automates the capture and organization of user progress data, streamlining data management processes and ensuring real-time data accuracy for reporting purposes.`,
-      `Orchestrated a notification system utilizing Slack API to automatically alert team members of user progress updates, enhancing team collaboration and enabling swift response to user engagement trends.`,
-      `Architected a synchronized workflow leveraging webhooks and GitHub Actions to ensure seamless operation of the tracking, data population, and notification systems, resulting in an integrated ecosystem that operates with high efficiency and minimal manual oversight.`
+      `Developed a user engagement tracking system to monitor interactions and progress, driving data-informed platform improvements.`,
+      `Automated data collection and organization with Google Sheets API, ensuring real-time reporting accuracy.`,
+      `Integrated Slack API notifications to alert team members about user progress, improving collaboration.`,
+      `Designed an automated workflow using Webhooks and GitHub Actions, reducing manual oversight.`
     ],
     techStack: ["Python", "Google Sheets API", "Slack API", "Webhooks"]
   },
   {
     title: "Job Market Analysis and Skills Extraction Using NLP",
     description: [
-      `Conducted extensive web scraping to accumulate over 15,000 job descriptions, creating a rich dataset for detailed job market analysis.`,
-      `Implemented sophisticated data cleaning techniques to refine the dataset, ensuring high-quality input for subsequent NLP tasks.`,
-      `Applied NLP methodologies to extract key skills and requirements from job descriptions, effectively decoding the nuances of various job specifications.`,
-      `Analyzed the processed data to uncover trends and insights that informed strategic business decisions, providing a data-driven approach to understanding job market demands.`
+      `Scraped and processed 15,000+ job descriptions to create a dataset for job market analysis.`,
+      `Applied NLP techniques to extract key skills and requirements, identifying hiring trends.`,
+      `Implemented data cleaning pipelines to improve dataset quality for accurate analysis.`,
+      `Analyzed trends and insights to support data-driven hiring strategies.`
     ],
-    techStack: ["Python", "NLP", "Web Scraping", "Selenium", "Data Cleaning"]
+    techStack: ["Python", "NLP", "Web Scraping", "Selenium", "Pandas", "Data Cleaning"]
   },
   {
     title: 'IKEA Furniture Image Generation with GANs',
     description: [
-      `Developed a web scraping system using Selenium to automatically collect numerous high-quality images of IKEA furniture, successfully capturing a diverse dataset for model training purposes.`,
-      `Managed large datasets by storing and organizing scraped images in an AWS S3 bucket, ensuring data durability and easy accessibility for processing and model training.`,
-      `Utilized advanced machine learning techniques to train a Generative Adversarial Network (GAN), calibrating it to generate realistic and varied images of furniture based on the attributes of the collected IKEA product images.`,
-      `Pioneered the use of GANs within the project to synthesize new furniture designs, pushing the boundaries of creative design and potential manufacturing applications.`,
+      `Built a web scraping system using Selenium to collect high-quality IKEA furniture images for training a Generative Adversarial Network (GAN).`,
+      `Stored and managed large datasets in AWS S3, ensuring durability and accessibility for model training.`,
+      `Trained a GAN model to generate realistic furniture designs based on collected images.`,
+      `Explored creative AI applications for automated furniture design and prototyping.`,
     ],
-    techStack: ["Python", "GANs", "AWS", "Selenium", "S3"]
+    url: "https://github.com/gamladz/Furniture-StyleGAN",
+    image: FurnitureGAN,
+    techStack: ["Python", "PyTorch", "GANs", "AWS", "Selenium", "S3"]
   }
 ];
