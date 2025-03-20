@@ -5,6 +5,18 @@ import FurnitureGAN from '../../images/FurnitureGAN.GIF';
 
 export const projects = [
   {
+    title: 'OnlAIne CV (WIP)',
+    description: [
+      `Developed a web application to help users create professional online CVs effortlessly.`,
+      `Utilized AI technology to enhance user-provided information, generating impactful and professional descriptions.`,
+      `Implemented customizable templates and domain purchase options for easy online publishing.`,
+      `Built with Next.js, Prisma, and Tailwind CSS for a responsive and user-friendly experience.`
+    ],
+    image: "https://ivan-resume-public-files.s3.eu-west-1.amazonaws.com/Onlaine.GIF",
+    url: "https://onlaine-cv.com",
+    techStack: ["Next.js", "Prisma", "OpenAI", "Vercel", "Tailwind CSS", "React"]
+  },
+  {
     title: 'JupyterLab AI Assistant & SQL Editor',
     description: [
       `Developed a JupyterLab extension that integrates LLMs to assist users with lesson-specific questions, generate practical exercises, and create quizzes.`,
