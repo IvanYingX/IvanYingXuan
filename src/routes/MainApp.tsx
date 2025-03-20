@@ -40,9 +40,8 @@ const MainApp: React.FC<MainAppProps> = ({ homeRef, aboutRef, experienceRef, edu
     <>
       {isPhone && <CollapsedApp homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} contactRef={contactRef} />}
       {!isPhone && <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} projectsRef={projectsRef} educationRef={educationRef} contactRef={contactRef} />}
-      {/* <NavBar homeRef={homeRef} aboutRef={aboutRef} experienceRef={experienceRef} educationRef={educationRef}/> */}
-      {/* <Box sx={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "repeat", backgroundSize: "30%", zIndex: -1 }} > */}
-        <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-65px", position: "relative" }}>
+
+        <Box ref={homeRef} id="home" className="home" sx={{ display: "flex", flexDirection: "column", marginTop: "-60px", position: "relative" }}>
           <Home/>
         </Box>
         <Box ref={aboutRef} className="about container" sx={{ display: "flex", flexDirection: "column" }} id="about">
